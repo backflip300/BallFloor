@@ -1,0 +1,39 @@
+package jPanel;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Player extends Entity {
+	
+	private double xd, yd;
+	
+	public Player(int x, int y) {
+		super(x,y);
+		w = 100; h = 10;
+	}
+	
+	public void draw(Graphics g){
+		if (xd > 0){
+		xd -= 0.2;
+		}
+		if (xd < 0){
+		xd += 0.2;	
+		}
+		move();
+		g.setColor(Color.ORANGE);
+		g.fillRect(x, y, w, h);
+	}
+	
+	private void move(){
+		x += xd;
+		y += yd;
+		
+	}
+	public void setXd(int value) {
+		xd = value;
+	}
+	public void setYd(int value) {
+		yd = value;
+	}
+}
+
