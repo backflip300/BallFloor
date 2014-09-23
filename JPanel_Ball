@@ -1,0 +1,57 @@
+package jPanel;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Ball extends Entity {
+	
+	private double dx,dy = -10;
+	
+	private double dt = .2;
+	private double gravity = 3;
+	private int wait = 1000;
+	public Ball(int x, int y) {
+		super(x,y);
+		w = 20; h = 20;
+	}
+	public void draw(Graphics g){
+	
+		move();
+		g.setColor(Color.ORANGE);
+		g.fillOval(x, y, w, h);
+	}
+	private void move() {
+		System.out.println(wait);
+		wait -= 5;
+		
+		if (wait < 0){
+		if (y >= 440 && x < MainClassy.getPlayerx() + 100 && x > MainClassy.getPlayerx() - 10 ){
+			dy = -Math.abs(dy);
+		}
+		dy = dy + gravity*dt;
+		//position formula
+		y += dy*dt + .5*gravity*dt*dt;
+		dx = 2;
+		x += dx;
+		
+		System.out.println("ball pos: " + y + "player pos: " + MainClassy.getPlayerx());
+		if ( y < 0){
+			dy = Math.abs(dy);
+		}
+		if (y > 500){
+			MainClassy.setGs(true);
+		}
+		
+	}
+		if ( x > 1000){
+			y = 250 ;
+			dy = - 10;
+			wait = 1000;
+			gravity += 2;
+			x = 20;
+		}
+	}
+		
+	}
+
+
